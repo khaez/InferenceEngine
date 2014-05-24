@@ -1,9 +1,11 @@
+/**
+ * TellSplitter.java
+ * Created on 19/5/2014
+ * Author: Kaishley Lingachetti (4303350)
+ */
+
 import java.util.ArrayList;
 
-/**
- * @author Kaishley
- *
- */
 public class TellSplitter {
 	
 private static ArrayList<String> rules;
