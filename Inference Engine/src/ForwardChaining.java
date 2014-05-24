@@ -1,3 +1,9 @@
+/*
+ * @ForwardChaining.java
+ * @Creatd on 22/5/2014
+ * @Author: Azim Khazali (1757733)
+ */
+
 import java.util.ArrayList;
 import java.util.Arrays;
  
@@ -8,110 +14,87 @@ import java.util.Arrays;
 // tell : p=>q;q=>r;p;q;
  
 class ForwardChaining{
-// create variables
-public static String tell;
-public static String ask;
-public static ArrayList<String> agenda;
- 
-public static ArrayList<String> facts;
-public static ArrayList<String> clauses;
-public static ArrayList<Integer> count;
-public static ArrayList<String> entailed;
- 
- 
-public ForwardChaining(String a, String t){
-	// initialize variables
-	agenda  = new ArrayList<String>();
-	clauses  = new ArrayList<String>();
-	entailed  = new ArrayList<String>();
-	facts  = new ArrayList<String>();
-	count  = new ArrayList<Integer>();
-	tell = t;
-	ask = a;
-	init(tell);
-}
- 
-// method which calls the main fcentails() method and returns output back to iengine
-public String execute(){
-	String output = "";
-	if (fcentails()){
-			// the method returned true so it entails
-			output = "YES: ";
-			// for each entailed symbol
-			for (int i=0;i<entailed.size();i++){
-					output += entailed.get(i)+", ";
-				}
-			output += ask;	
+	// create variables
+	public static String ask;
+	public static ArrayList<String> workingList;
+	public static ArrayList<String> rules;
+	public static ArrayList<Integer> count;
+	public static ArrayList<String> queued;
+	 
+	 
+	public ForwardChaining(String a, String t){
+		TellSplitter ts = new TellSplitter(t);
+		
+		// initialize variables
+		workingList  = ts.getNonRules();
+		rules  = ts.getRules();
+		queued  = new ArrayList<String>();
+		count  = ts.getCount();
+		ask = a;
 	}
-	else{
-			output = "NO";
-	}
-	return output;		
-}
- 
-// FC algorithm
-public boolean fcentails(){
-// loop through while there are unprocessed facts
-while(!agenda.isEmpty()){
-		// take the first item and process it
-	 	String p = agenda.remove(0);
-		// add to entailed
-	 	
-		entailed.add(p);
-		// for each of the clauses....
-		for (int i=0;i<clauses.size();i++){
-			// .... that contain p in its premise
-			if (premiseContains(clauses.get(i),p)){
-			Integer j = count.get(i);
-			// reduce count : unknown elements in each premise
-			count.set(i,--j);
-				// all the elements in the premise are now known
-				if (count.get(i)==0){
-					// the conclusion has been proven so put into agenda
-					String head = clauses.get(i).split("=>")[1];
-					// have we just proven the 'ask'?
-					if (head.equals(ask))
-						return true;
-					agenda.add(head);					
-				}
-			}	
+	 
+	// method which calls the main fcPresent() method and returns output back to the Inference Engine
+	public String printResult(){
+		String result = "";
+		if (fcPresent()){
+				// the method returned true so it is present
+				result = "YES: ";
+				// for each queued symbol
+				for (int i=0;i<queued.size();i++){
+						result += queued.get(i)+", ";
+					}
+				result += ask;	
 		}
-	}
-	// if we arrive here then ask cannot be entailed
-	return false;
-}
- 
- 
- 
- 
-// method which sets up initial values for forward chaining
-// takes in string representing KB and seperates symbols and clauses, calculates count etc..
-public static void init(String tell){
-   String[] sentences = tell.split(";");
-	for (int i=0;i<sentences.length;i++){
- 
-		if (!sentences[i].contains("=>")) 
-			// add facts to be processed
-			agenda.add(sentences[i]);
 		else{
-			// add sentences
-			clauses.add(sentences[i]);
-			count.add(sentences[i].split("&").length);
-			}
+				result = "NO";
+		}
+		return result;		
 	}
-}
- 
- 
-// method which checks if p appears in the premise of a given clause	
-// input : clause, p
-// output : true if p is in the premise of clause
-public static boolean premiseContains(String clause, String p){
-	String premise = clause.split("=>")[0];
-	String[] conjuncts = premise.split("&");
-	// check if p is in the premise
-	if (conjuncts.length==1)
-		return premise.equals(p);
-	else
-		return Arrays.asList(conjuncts).contains(p);
-}
+	 
+	// FC algorithm
+	public boolean fcPresent(){
+	// This will loop if there is any unprocessed workingList
+	while(!workingList.isEmpty()){
+			// take the first item and process it
+		 	String p = workingList.remove(0);
+		 	//System.out.println(p);
+			// add to queued
+		 	
+			queued.add(p);
+			// for each of the rules....
+			for (int i=0;i<rules.size();i++){
+				// .... that contain p in its premise
+				if (premiseContains(rules.get(i),p)){
+				Integer j = count.get(i);
+				// reduce count : unknown elements in each premise
+				count.set(i,--j);
+					// all the elements in the premise are now known
+					if (count.get(i)==0){
+						// the conclusion has been proven so put into workingList
+						String head = rules.get(i).split("=>")[1];
+						// have we just proven the 'ask'?
+						if (head.equals(ask))
+							return true;
+						workingList.add(head);					
+					}
+				}	
+			}
+		}
+		// if we arrive here then ask cannot be queued
+		return false;
+	}
+	 
+	// method which checks if p appears in the premise of a given rule	
+	// input : rule, p
+	// output : true if p is in the premise of rule
+	public static boolean premiseContains(String rule, String p)
+	{
+		String premise = rule.split("=>")[0];
+		String[] conjuncts = premise.split("&");
+		// check if p is in the premise
+		if (conjuncts.length==1)
+			return premise.equals(p);
+		else
+			return Arrays.asList(conjuncts).contains(p);
+	}
 }
