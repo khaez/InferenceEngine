@@ -11,7 +11,7 @@ public class InferenceEngine {
 	{
 		String _tell = "";
 		String _ask = "";
-		ArrayList<String> inputStrings = new ArrayList();
+		ArrayList<String> inputStrings = new ArrayList<String>();
 		
 		if(checkInput(args))
 		{
@@ -37,10 +37,9 @@ public class InferenceEngine {
 				}
 				
 				runEngine(args, _tell, _ask);
+				sc.close();
 			}catch (FileNotFoundException e){ 
 			    System.err.println("FileNotFoundException: " + e.getMessage());
-			}catch (IOException e){
-				System.err.println("IOException: " + e.getMessage());
 			}
 			
 		}
@@ -68,7 +67,7 @@ public class InferenceEngine {
 		else if(file[0].toUpperCase().equals("BC"))
 		{
 			BackwardChaining bc = new BackwardChaining(ask, tell);
-			//System.out.println(bc.printResult());
+			System.out.println(bc.printResult());
 		}
 		
 	}
