@@ -1,3 +1,10 @@
+/*
+ * BackwardChaining.cpp
+ * Created on 20/5/2014
+ * Author: Azim Khazali (1757733)
+ */
+
+
 import java.util.*;
 import java.io.*;
  
