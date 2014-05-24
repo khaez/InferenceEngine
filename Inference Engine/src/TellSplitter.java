@@ -1,7 +1,7 @@
-/**
- * TellSplitter.java
- * Created on 19/5/2014
- * Author: Kaishley Lingachetti (4303350)
+/*
+ * @TellSplitter.java
+ * @Created on 19/5/2014
+ * @Author: Kaishley Lingachetti (4303350)
  */
 
 import java.util.ArrayList;

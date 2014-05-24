@@ -5,13 +5,6 @@ import java.util.ArrayList;
  * @Created on 22/5/2014
  * @author Kaishley Lingachetti (4303350)
  */
-
- 
-// to run simply do a: new BC(ask,tell) and then bc.execute()
-// ask is a propositional symbol
-// and tell is a knowledge base
-// ask : p
-// tell : p=>q;q=>r;r;
  
 public class BackwardChaining{
 // create variables
