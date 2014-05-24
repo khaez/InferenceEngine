@@ -68,7 +68,7 @@ public class InferenceEngine {
 		else if(file[0].toUpperCase().equals("BC"))
 		{
 			BackwardChaining bc = new BackwardChaining(ask, tell);
-			System.out.println(bc.printResult());
+			//System.out.println(bc.printResult());
 		}
 		
 	}
