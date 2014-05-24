@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-/**
- * BackwardChaining.java
- * Created on 22/5/2014
- * Author: Kaishley Lingachetti (4303350)
+/*
+ * @BackwardChaining.java
+ * @Created on 22/5/2014
+ * @author Kaishley Lingachetti (4303350)
  */
 
  
@@ -15,20 +15,18 @@ import java.util.ArrayList;
  
 public class BackwardChaining{
 // create variables
-	private static String ask;
 	private static ArrayList<String> rules;
 	private static ArrayList<String> facts;
 	private static ArrayList<String> workingList;
 	private static ArrayList<String> queued;
 	
-	public BackwardChaining(String tell, String ask)
+	public BackwardChaining(String ask, String tell)
 	{
 		TellSplitter ts = new TellSplitter(tell);
-		this.ask = ask;
 		rules = ts.getRules();
 		facts = ts.getNonRules();
 		queued = new ArrayList<String>();
-		
+		workingList = new ArrayList<String>();
 		workingList.add(ask);
 	}
 	
