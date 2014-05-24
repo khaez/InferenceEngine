@@ -47,11 +47,6 @@ public class InferenceEngine {
 		else
 			inputMessage();
 		
-/*		ForwardChaining fc = new ForwardChaining("d","p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p1=>d; p1&p3 => c; a; b; p2;");
-		System.out.println(fc.execute());
-		
-		BackwardChaining bc = new BackwardChaining("d","p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p1=>d; p1&p3 => c; a; b; p2;");
-		System.out.println(bc.execute());*/
 		
 	}
 	
@@ -59,7 +54,7 @@ public class InferenceEngine {
 	public static void runEngine(String file[], String tell, String ask)
 	{
 		// This if statement calls the Truth Table method
-		if(file[0].toUpperCase() == "TT")
+		if(file[0].toUpperCase().equals("TT"))
 		{
 			// The Truth Table method goes here
 		}
@@ -70,7 +65,7 @@ public class InferenceEngine {
 			System.out.println(fc.execute());
 		}
 		// This if statement calls the Backward Chaining method
-		else if(file[0].toUpperCase() == "BC")
+		else if(file[0].toUpperCase().equals("BC"))
 		{
 			BackwardChaining bc = new BackwardChaining(ask, tell);
 			System.out.println(bc.execute());
