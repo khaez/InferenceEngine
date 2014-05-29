@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public class TellSplitter {
 	
 	private static ArrayList<String> rules;
-	private static ArrayList<String> nonRules;
+	private static ArrayList<String> facts;
 	private static ArrayList<Integer> count;
 
 	public TellSplitter(String tell) 
 	{
 		rules = new ArrayList<String>();
-		nonRules = new ArrayList<String>();
+		facts = new ArrayList<String>();
 		count = new ArrayList<Integer>();
 		
 		//removing any spaces
@@ -32,7 +32,7 @@ public class TellSplitter {
 			if (!clauses[i].contains("=>")) 
 			{
 				// add rules to be processed
-				nonRules.add(clauses[i]);
+				facts.add(clauses[i]);
 			}
 			else
 			{
@@ -48,9 +48,9 @@ public class TellSplitter {
 		return rules;
 	}
 	
-	public ArrayList<String> getNonRules() 
+	public ArrayList<String> getFacts() 
 	{
-		return nonRules;
+		return facts;
 	}
 	
 	public ArrayList<Integer> getCount() 

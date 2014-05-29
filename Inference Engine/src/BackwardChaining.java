@@ -17,7 +17,7 @@ public class BackwardChaining{
 	{
 		TellSplitter ts = new TellSplitter(tell);
 		rules = ts.getRules();
-		facts = ts.getNonRules();
+		facts = ts.getFacts();
 		queued = new ArrayList<String>();
 		workingList = new ArrayList<String>();
 		workingList.add(ask);

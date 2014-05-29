@@ -26,7 +26,7 @@ class ForwardChaining{
 		TellSplitter ts = new TellSplitter(t);
 		
 		// initialize variables
-		workingList  = ts.getNonRules();
+		workingList  = ts.getFacts();
 		rules  = ts.getRules();
 		queued  = new ArrayList<String>();
 		count  = ts.getCount();
