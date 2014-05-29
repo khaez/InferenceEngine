@@ -55,7 +55,8 @@ public class InferenceEngine {
 		// This if statement calls the Truth Table method
 		if(file[0].toUpperCase().equals("TT"))
 		{
-			// The Truth Table method goes here
+			TruthTable tt = new TruthTable(ask, tell);
+			System.out.println(tt.printResult());
 		}
 		// This if statement calls the Forward Chaining method
 		else if(file[0].toUpperCase().equals("FC"))
