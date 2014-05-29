@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 public class TellSplitter {
 	
+	private static ArrayList<String> KB;
 	private static ArrayList<String> rules;
 	private static ArrayList<String> facts;
 	private static ArrayList<Integer> count;
 
 	public TellSplitter(String tell) 
 	{
+		KB = new ArrayList<String>();
 		rules = new ArrayList<String>();
 		facts = new ArrayList<String>();
 		count = new ArrayList<Integer>();
@@ -29,6 +31,7 @@ public class TellSplitter {
 		String[] clauses = tempTell.split(";");
 		for (int i = 0 ; i < clauses.length; i++)
 		{
+			KB.add(clauses[i]);
 			if (!clauses[i].contains("=>")) 
 			{
 				// add rules to be processed
@@ -41,6 +44,11 @@ public class TellSplitter {
 				count.add(clauses[i].split("&").length);
 			}
 		}
+	}
+	
+	public ArrayList<String> getKB() 
+	{
+		return KB;
 	}
 	
 	public ArrayList<String> getRules() 
