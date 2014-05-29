@@ -1,11 +1,11 @@
-import java.util.ArrayList;
-
 /**
  * BackwardChaining.java
  * Created on 22/5/2014
  * Author: Kaishley Lingachetti (4303350)
  */
- 
+
+import java.util.ArrayList;
+
 public class BackwardChaining{
 // create variables
 	private ArrayList<String> rules;
