@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-/*
- * @BackwardChaining.java
- * @Created on 22/5/2014
- * @author Kaishley Lingachetti (4303350)
+/**
+ * BackwardChaining.java
+ * Created on 22/5/2014
+ * Author: Kaishley Lingachetti (4303350)
  */
  
 public class BackwardChaining{

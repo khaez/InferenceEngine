@@ -1,9 +1,8 @@
-/*
- * @ForwardChaining.java
- * @Creatd on 22/5/2014
- * @Author: Azim Khazali (1757733)
+/**
+ * ForwardChaining.java
+ * Created on 22/5/2014
+ * Author: Azim Khazali (1757733)
  */
-
 import java.util.ArrayList;
 import java.util.Arrays;
  

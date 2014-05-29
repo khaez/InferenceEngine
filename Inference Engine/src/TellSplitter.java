@@ -1,17 +1,16 @@
-/*
- * @TellSplitter.java
- * @Created on 19/5/2014
- * @Author: Kaishley Lingachetti (4303350)
+/**
+ * TellSplitter.java
+ * Created on 19/5/2014
+ * Author: Kaishley Lingachetti (4303350)
  */
-
 import java.util.ArrayList;
 
 public class TellSplitter {
 	
-	private static ArrayList<String> KB;
-	private static ArrayList<String> rules;
-	private static ArrayList<String> facts;
-	private static ArrayList<Integer> count;
+	private ArrayList<String> KB;
+	private ArrayList<String> rules;
+	private ArrayList<String> facts;
+	private ArrayList<Integer> count;
 
 	public TellSplitter(String tell) 
 	{

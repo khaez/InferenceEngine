@@ -1,4 +1,8 @@
-
+/**
+ * InferenceEngine.java
+ * Created on 19/5/2014
+ * Author: Azim Khazali (1757733)
+ */
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -35,18 +39,14 @@ public class InferenceEngine {
 						_ask = inputStrings.get(i+1);
 					}
 				}
-				
 				runEngine(args, _tell, _ask);
 				sc.close();
 			}catch (FileNotFoundException e){ 
 			    System.err.println("FileNotFoundException: " + e.getMessage());
 			}
-			
 		}
 		else
 			inputMessage();
-		
-		
 	}
 	
 	// This method will run the engine base on what method is selected
@@ -93,8 +93,4 @@ public class InferenceEngine {
 		System.out.println("2) FC - Forward Chaining");
 		System.out.println("3) BC - Backward Chaining");
 	}
-	
-	
-	
-	
 }
