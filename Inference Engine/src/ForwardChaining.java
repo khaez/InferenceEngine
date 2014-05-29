@@ -15,11 +15,11 @@ import java.util.Arrays;
  
 class ForwardChaining{
 	// create variables
-	public static String ask;
-	public static ArrayList<String> workingList;
-	public static ArrayList<String> rules;
-	public static ArrayList<Integer> count;
-	public static ArrayList<String> queued;
+	public String ask;
+	public ArrayList<String> workingList;
+	public ArrayList<String> rules;
+	public ArrayList<Integer> count;
+	public ArrayList<String> queued;
 	 
 	 
 	public ForwardChaining(String a, String t){

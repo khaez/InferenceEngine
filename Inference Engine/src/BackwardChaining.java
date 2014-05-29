@@ -8,10 +8,10 @@ import java.util.ArrayList;
  
 public class BackwardChaining{
 // create variables
-	private static ArrayList<String> rules;
-	private static ArrayList<String> facts;
-	private static ArrayList<String> workingList;
-	private static ArrayList<String> queued;
+	private ArrayList<String> rules;
+	private ArrayList<String> facts;
+	private ArrayList<String> workingList;
+	private ArrayList<String> queued;
 	
 	public BackwardChaining(String ask, String tell)
 	{
